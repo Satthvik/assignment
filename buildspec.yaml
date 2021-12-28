@@ -1,0 +1,8 @@
+buildjob:
+  stage: build
+  tags:
+    - 
+  scripts:
+    - docker build -t sathvikns/hello:version1 .
+    - docker image push sathvikns/hello:version1
+    - aws ecs update-service --cluster helloflask --service helloflask-service --force-new-deployment
